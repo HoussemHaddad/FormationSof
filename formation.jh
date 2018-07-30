@@ -1,0 +1,118 @@
+entity Utilisateur {
+	ID_user Long
+    
+}
+
+entity Formulaire {
+	ID_Formulaire Long
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Question {
+	ID_Question Long,
+	
+	Titre String
+}
+
+entity TypeQuestion {
+	ID_Type Long required,
+    Nom_Type String
+}
+
+
+entity Reservation {
+	
+}
+
+
+entity AutresInformations {
+	
+	ID_Info Long,
+	NomInfo String,
+	ContenuInfo String
+	
+}
+
+
+
+entity Role {
+	ID_Role Long,
+	NomRole String
+}
+
+entity Commentaire {
+	ID_comm Long,
+	Contenu String
+}
+entity Formation {
+	ID_Formation Long,
+	NomFormation String,
+    Information String
+}
+
+entity CentreDeFormation {
+	ID_Centre Long,
+	NomCentre String,
+    Adresse String
+}
+
+entity Notification {
+	ID_Notif Long
+}
+
+entity TypeDeNotification{
+	ID_Type Long,
+	NomType String
+}
+
+entity CategorieFormation{
+	ID_Categorie Long,
+	NomCategorie String
+}
+
+//**********************************
+
+
+//*********************************
+relationship ManyToMany {
+	Utilisateur{ID_user} to Role{ID_Role},
+    //Utilisateur{ID_user} to Formation{ID_Formation}
+    Reservation to Question,
+    Formulaire to Question
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Utilisateur{IDManager} to Utilisateur,
+	/**
+	* A relationship
+	*/
+	Utilisateur{ID_comm} to Commentaire,
+    Utilisateur to Formulaire,
+    Utilisateur to Notification,
+    Formation to Formulaire,
+    CentreDeFormation to Formation,
+    CategorieFormation to Formation,
+    Utilisateur to Reservation,
+    Formation to Reservation,
+    Reservation to Notification,
+    TypeDeNotification to Notification
+    TypeQuestion to Question,
+    Reservation to AutresInformations
+    
+}
+
+
+
+// defining multiple oneToOne relationships
+/**
+*relationship OneToOne {
+*	JobHistory{job} to Job,
+*	JobHistory{department} to Department,
+*	JobHistory{employee} to Employee
+*}
+*/
+
+// Set pagination options
+
