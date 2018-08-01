@@ -4,7 +4,8 @@ entity Category {
 	
 entity Blog {
 	name String required,
-	content String,
+	contenu String,
+    type String,
 	createdAt ZonedDateTime required
 	}
 
