@@ -17,6 +17,18 @@
                 <dd>
                     <span>{{formation.information}}</span>
                 </dd>
+                <dt><span>Centre De Formation</span></dt>
+                <dd>
+                    <div *ngIf="formation.centreDeFormation">
+                        <a [routerLink]="['/centre-de-formation', formation.centreDeFormation?.id, 'view']">{{formation.centreDeFormation?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Categorie Formation</span></dt>
+                <dd>
+                    <div *ngIf="formation.categorieFormation">
+                        <a [routerLink]="['/categorie-formation', formation.categorieFormation?.id, 'view']">{{formation.categorieFormation?.id}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

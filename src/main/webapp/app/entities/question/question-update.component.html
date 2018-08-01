@@ -20,6 +20,13 @@
                         [(ngModel)]="question.titre" />
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" for="field_typeQuestion">Type Question</label>
+                    <select class="form-control" id="field_typeQuestion" name="typeQuestion" [(ngModel)]="question.typeQuestion" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="typeQuestionOption.id === question.typeQuestion?.id ? question.typeQuestion : typeQuestionOption" *ngFor="let typeQuestionOption of typequestions; trackBy: trackTypeQuestionById">{{typeQuestionOption.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

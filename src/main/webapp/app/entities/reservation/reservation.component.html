@@ -15,12 +15,30 @@
             <thead>
             <tr>
             <th><span>ID</span></th>
+            <th><span>Utilisateur</span></th>
+            <th><span>Formation</span></th>
+            <th><span>Question</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let reservation of reservations ;trackBy: trackId">
                 <td><a [routerLink]="['/reservation', reservation.id, 'view' ]">{{reservation.id}}</a></td>
+                <td>
+                    <div *ngIf="reservation.utilisateur">
+                        <a [routerLink]="['../utilisateur', reservation.utilisateur?.id, 'view' ]" >{{reservation.utilisateur?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="reservation.formation">
+                        <a [routerLink]="['../formation', reservation.formation?.id, 'view' ]" >{{reservation.formation?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <span *ngFor="let question of reservation.questions; let last = last">
+                            <a class="form-control-static" [routerLink]="['../question', question?.id, 'view' ]">{{question.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

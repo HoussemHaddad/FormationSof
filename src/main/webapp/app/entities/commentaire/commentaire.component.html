@@ -17,6 +17,7 @@
             <th><span>ID</span></th>
             <th><span>I Dcomm</span></th>
             <th><span>Contenu</span></th>
+            <th><span>Utilisateur</span></th>
             <th></th>
             </tr>
             </thead>
@@ -25,6 +26,11 @@
                 <td><a [routerLink]="['/commentaire', commentaire.id, 'view' ]">{{commentaire.id}}</a></td>
                 <td>{{commentaire.iDcomm}}</td>
                 <td>{{commentaire.contenu}}</td>
+                <td>
+                    <div *ngIf="commentaire.utilisateur">
+                        <a [routerLink]="['../utilisateur', commentaire.utilisateur?.id, 'view' ]" >{{commentaire.utilisateur?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

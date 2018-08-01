@@ -13,7 +13,14 @@
             "fieldType": "String"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "question",
+            "otherEntityName": "question",
+            "otherEntityRelationshipName": "typeQuestion"
+        }
+    ],
     "changelogDate": "20180801073828",
     "entityTableName": "type_question",
     "dto": "no",

@@ -15,6 +15,26 @@
                         [(ngModel)]="formulaire.iDFormulaire" />
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" for="field_utilisateur">Utilisateur</label>
+                    <select class="form-control" id="field_utilisateur" name="utilisateur" [(ngModel)]="formulaire.utilisateur" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="utilisateurOption.id === formulaire.utilisateur?.id ? formulaire.utilisateur : utilisateurOption" *ngFor="let utilisateurOption of utilisateurs; trackBy: trackUtilisateurById">{{utilisateurOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_formation">Formation</label>
+                    <select class="form-control" id="field_formation" name="formation" [(ngModel)]="formulaire.formation" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="formationOption.id === formulaire.formation?.id ? formulaire.formation : formationOption" *ngFor="let formationOption of formations; trackBy: trackFormationById">{{formationOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="field_question">Question</label>
+                    <select class="form-control" id="field_question" multiple name="question" [(ngModel)]="formulaire.questions">
+                        <option [ngValue]="getSelected(formulaire.questions, questionOption)" *ngFor="let questionOption of questions; trackBy: trackQuestionById">{{questionOption.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

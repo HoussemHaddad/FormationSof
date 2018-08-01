@@ -18,6 +18,8 @@
             <th><span>I D Formation</span></th>
             <th><span>Nom Formation</span></th>
             <th><span>Information</span></th>
+            <th><span>Centre De Formation</span></th>
+            <th><span>Categorie Formation</span></th>
             <th></th>
             </tr>
             </thead>
@@ -27,6 +29,16 @@
                 <td>{{formation.iDFormation}}</td>
                 <td>{{formation.nomFormation}}</td>
                 <td>{{formation.information}}</td>
+                <td>
+                    <div *ngIf="formation.centreDeFormation">
+                        <a [routerLink]="['../centre-de-formation', formation.centreDeFormation?.id, 'view' ]" >{{formation.centreDeFormation?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="formation.categorieFormation">
+                        <a [routerLink]="['../categorie-formation', formation.categorieFormation?.id, 'view' ]" >{{formation.categorieFormation?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

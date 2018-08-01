@@ -13,6 +13,12 @@
                 <dd>
                     <span>{{commentaire.contenu}}</span>
                 </dd>
+                <dt><span>Utilisateur</span></dt>
+                <dd>
+                    <div *ngIf="commentaire.utilisateur">
+                        <a [routerLink]="['/utilisateur', commentaire.utilisateur?.id, 'view']">{{commentaire.utilisateur?.id}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

@@ -79,13 +79,14 @@ public class FormulaireResource {
     /**
      * GET  /formulaires : get all the formulaires.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many)
      * @return the ResponseEntity with status 200 (OK) and the list of formulaires in body
      */
     @GetMapping("/formulaires")
     @Timed
-    public List<Formulaire> getAllFormulaires() {
+    public List<Formulaire> getAllFormulaires(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all Formulaires");
-        return formulaireRepository.findAll();
+        return formulaireRepository.findAllWithEagerRelationships();
     }
 
     /**
@@ -98,7 +99,7 @@ public class FormulaireResource {
     @Timed
     public ResponseEntity<Formulaire> getFormulaire(@PathVariable Long id) {
         log.debug("REST request to get Formulaire : {}", id);
-        Optional<Formulaire> formulaire = formulaireRepository.findById(id);
+        Optional<Formulaire> formulaire = formulaireRepository.findOneWithEagerRelationships(id);
         return ResponseUtil.wrapOrNotFound(formulaire);
     }
 

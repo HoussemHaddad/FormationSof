@@ -9,6 +9,24 @@
                 <dd>
                     <span>{{formulaire.iDFormulaire}}</span>
                 </dd>
+                <dt><span>Utilisateur</span></dt>
+                <dd>
+                    <div *ngIf="formulaire.utilisateur">
+                        <a [routerLink]="['/utilisateur', formulaire.utilisateur?.id, 'view']">{{formulaire.utilisateur?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Formation</span></dt>
+                <dd>
+                    <div *ngIf="formulaire.formation">
+                        <a [routerLink]="['/formation', formulaire.formation?.id, 'view']">{{formulaire.formation?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Question</span></dt>
+                <dd>
+                    <span *ngFor="let question of formulaire.questions; let last = last">
+                        <a [routerLink]="['/question', question?.id, 'view' ]">{{question.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
             </dl>
 
             <button type="submit"

@@ -9,6 +9,24 @@
                 <dd>
                     <span>{{notification.iDNotif}}</span>
                 </dd>
+                <dt><span>Utilisateur</span></dt>
+                <dd>
+                    <div *ngIf="notification.utilisateur">
+                        <a [routerLink]="['/utilisateur', notification.utilisateur?.id, 'view']">{{notification.utilisateur?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Reservation</span></dt>
+                <dd>
+                    <div *ngIf="notification.reservation">
+                        <a [routerLink]="['/reservation', notification.reservation?.id, 'view']">{{notification.reservation?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Type De Notification</span></dt>
+                <dd>
+                    <div *ngIf="notification.typeDeNotification">
+                        <a [routerLink]="['/type-de-notification', notification.typeDeNotification?.id, 'view']">{{notification.typeDeNotification?.id}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

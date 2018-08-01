@@ -56,6 +56,25 @@ public class CacheConfiguration {
             cm.createCache(formation.com.domain.Notification.class.getName(), jcacheConfiguration);
             cm.createCache(formation.com.domain.TypeDeNotification.class.getName(), jcacheConfiguration);
             cm.createCache(formation.com.domain.CategorieFormation.class.getName(), jcacheConfiguration);
+            cm.createCache(formation.com.domain.Utilisateur.class.getName() + ".roles", jcacheConfiguration);
+            cm.createCache(formation.com.domain.Utilisateur.class.getName() + ".utilisateurs", jcacheConfiguration);
+            cm.createCache(formation.com.domain.Utilisateur.class.getName() + ".commentaires", jcacheConfiguration);
+            cm.createCache(formation.com.domain.Utilisateur.class.getName() + ".formulaires", jcacheConfiguration);
+            cm.createCache(formation.com.domain.Utilisateur.class.getName() + ".notifications", jcacheConfiguration);
+            cm.createCache(formation.com.domain.Utilisateur.class.getName() + ".reservations", jcacheConfiguration);
+            cm.createCache(formation.com.domain.Formulaire.class.getName() + ".questions", jcacheConfiguration);
+            cm.createCache(formation.com.domain.Question.class.getName() + ".reservations", jcacheConfiguration);
+            cm.createCache(formation.com.domain.Question.class.getName() + ".formulaires", jcacheConfiguration);
+            cm.createCache(formation.com.domain.TypeQuestion.class.getName() + ".questions", jcacheConfiguration);
+            cm.createCache(formation.com.domain.Reservation.class.getName() + ".questions", jcacheConfiguration);
+            cm.createCache(formation.com.domain.Reservation.class.getName() + ".notifications", jcacheConfiguration);
+            cm.createCache(formation.com.domain.Reservation.class.getName() + ".autresInformations", jcacheConfiguration);
+            cm.createCache(formation.com.domain.Role.class.getName() + ".utilisateurs", jcacheConfiguration);
+            cm.createCache(formation.com.domain.Formation.class.getName() + ".formulaires", jcacheConfiguration);
+            cm.createCache(formation.com.domain.Formation.class.getName() + ".reservations", jcacheConfiguration);
+            cm.createCache(formation.com.domain.CentreDeFormation.class.getName() + ".formations", jcacheConfiguration);
+            cm.createCache(formation.com.domain.TypeDeNotification.class.getName() + ".notifications", jcacheConfiguration);
+            cm.createCache(formation.com.domain.CategorieFormation.class.getName() + ".formations", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

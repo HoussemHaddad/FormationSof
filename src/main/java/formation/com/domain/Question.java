@@ -1,5 +1,7 @@
 package formation.com.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -7,6 +9,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -29,6 +33,20 @@ public class Question implements Serializable {
 
     @Column(name = "titre")
     private String titre;
+
+    @ManyToOne
+    @JsonIgnoreProperties("questions")
+    private TypeQuestion typeQuestion;
+
+    @ManyToMany(mappedBy = "questions")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Reservation> reservations = new HashSet<>();
+
+    @ManyToMany(mappedBy = "questions")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Formulaire> formulaires = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -63,6 +81,69 @@ public class Question implements Serializable {
 
     public void setTitre(String titre) {
         this.titre = titre;
+    }
+
+    public TypeQuestion getTypeQuestion() {
+        return typeQuestion;
+    }
+
+    public Question typeQuestion(TypeQuestion typeQuestion) {
+        this.typeQuestion = typeQuestion;
+        return this;
+    }
+
+    public void setTypeQuestion(TypeQuestion typeQuestion) {
+        this.typeQuestion = typeQuestion;
+    }
+
+    public Set<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public Question reservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
+        return this;
+    }
+
+    public Question addReservation(Reservation reservation) {
+        this.reservations.add(reservation);
+        reservation.getQuestions().add(this);
+        return this;
+    }
+
+    public Question removeReservation(Reservation reservation) {
+        this.reservations.remove(reservation);
+        reservation.getQuestions().remove(this);
+        return this;
+    }
+
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    public Set<Formulaire> getFormulaires() {
+        return formulaires;
+    }
+
+    public Question formulaires(Set<Formulaire> formulaires) {
+        this.formulaires = formulaires;
+        return this;
+    }
+
+    public Question addFormulaire(Formulaire formulaire) {
+        this.formulaires.add(formulaire);
+        formulaire.getQuestions().add(this);
+        return this;
+    }
+
+    public Question removeFormulaire(Formulaire formulaire) {
+        this.formulaires.remove(formulaire);
+        formulaire.getQuestions().remove(this);
+        return this;
+    }
+
+    public void setFormulaires(Set<Formulaire> formulaires) {
+        this.formulaires = formulaires;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

@@ -14,7 +14,14 @@
             "fieldType": "String"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "reservation",
+            "otherEntityName": "reservation",
+            "otherEntityField": "id"
+        }
+    ],
     "changelogDate": "20180801073830",
     "entityTableName": "autres_informations",
     "dto": "no",

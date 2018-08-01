@@ -10,7 +10,14 @@
             "fieldType": "String"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "notification",
+            "otherEntityName": "notification",
+            "otherEntityRelationshipName": "typeDeNotification"
+        }
+    ],
     "changelogDate": "20180801073836",
     "entityTableName": "type_de_notification",
     "dto": "no",

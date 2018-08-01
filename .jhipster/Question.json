@@ -10,7 +10,28 @@
             "fieldType": "String"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "typeQuestion",
+            "otherEntityName": "typeQuestion",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "reservation",
+            "otherEntityName": "reservation",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "question"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "formulaire",
+            "otherEntityName": "formulaire",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "question"
+        }
+    ],
     "changelogDate": "20180801073827",
     "javadoc": "not an ignored comment",
     "entityTableName": "question",

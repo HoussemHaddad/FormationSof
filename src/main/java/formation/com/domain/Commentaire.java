@@ -1,5 +1,6 @@
 package formation.com.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -27,6 +28,10 @@ public class Commentaire implements Serializable {
 
     @Column(name = "contenu")
     private String contenu;
+
+    @ManyToOne
+    @JsonIgnoreProperties("commentaires")
+    private Utilisateur utilisateur;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -61,6 +66,19 @@ public class Commentaire implements Serializable {
 
     public void setContenu(String contenu) {
         this.contenu = contenu;
+    }
+
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public Commentaire utilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+        return this;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

@@ -1,11 +1,14 @@
 package formation.com.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -24,6 +27,21 @@ public class Formulaire implements Serializable {
 
     @Column(name = "i_d_formulaire")
     private Long iDFormulaire;
+
+    @ManyToOne
+    @JsonIgnoreProperties("formulaires")
+    private Utilisateur utilisateur;
+
+    @ManyToOne
+    @JsonIgnoreProperties("formulaires")
+    private Formation formation;
+
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "formulaire_question",
+               joinColumns = @JoinColumn(name = "formulaires_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "questions_id", referencedColumnName = "id"))
+    private Set<Question> questions = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -45,6 +63,57 @@ public class Formulaire implements Serializable {
 
     public void setiDFormulaire(Long iDFormulaire) {
         this.iDFormulaire = iDFormulaire;
+    }
+
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public Formulaire utilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+        return this;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
+    public Formation getFormation() {
+        return formation;
+    }
+
+    public Formulaire formation(Formation formation) {
+        this.formation = formation;
+        return this;
+    }
+
+    public void setFormation(Formation formation) {
+        this.formation = formation;
+    }
+
+    public Set<Question> getQuestions() {
+        return questions;
+    }
+
+    public Formulaire questions(Set<Question> questions) {
+        this.questions = questions;
+        return this;
+    }
+
+    public Formulaire addQuestion(Question question) {
+        this.questions.add(question);
+        question.getFormulaires().add(this);
+        return this;
+    }
+
+    public Formulaire removeQuestion(Question question) {
+        this.questions.remove(question);
+        question.getFormulaires().remove(this);
+        return this;
+    }
+
+    public void setQuestions(Set<Question> questions) {
+        this.questions = questions;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
