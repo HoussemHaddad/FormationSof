@@ -1,0 +1,19 @@
+{
+    "name": "Utilisateur",
+    "fields": [
+        {
+            "fieldName": "iDuser",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180801073825",
+    "entityTableName": "utilisateur",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

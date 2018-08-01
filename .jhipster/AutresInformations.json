@@ -1,0 +1,27 @@
+{
+    "name": "AutresInformations",
+    "fields": [
+        {
+            "fieldName": "iDInfo",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "nomInfo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "contenuInfo",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180801073830",
+    "entityTableName": "autres_informations",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

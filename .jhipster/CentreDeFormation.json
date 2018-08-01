@@ -1,0 +1,27 @@
+{
+    "name": "CentreDeFormation",
+    "fields": [
+        {
+            "fieldName": "iDCentre",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "nomCentre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "adresse",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180801073834",
+    "entityTableName": "centre_de_formation",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

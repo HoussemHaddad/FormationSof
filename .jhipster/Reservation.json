@@ -1,0 +1,14 @@
+{
+    "name": "Reservation",
+    "fields": [],
+    "relationships": [],
+    "changelogDate": "20180801073829",
+    "entityTableName": "reservation",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
