@@ -1,0 +1,72 @@
+entity Utilisateur {
+	IDuser Long
+    
+}
+
+entity Formulaire {
+	IDFormulaire Long
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Question {
+	IDQuestion Long,
+	
+	Titre String
+}
+
+entity TypeQuestion {
+	IDType Long required,
+    NomType String
+}
+
+
+entity Reservation {
+	
+}
+
+
+entity AutresInformations {
+	
+	IDInfo Long,
+	NomInfo String,
+	ContenuInfo String
+	
+}
+
+
+
+entity Role {
+	IDRole Long,
+	NomRole String
+}
+
+entity Commentaire {
+	IDcomm Long,
+	Contenu String
+}
+entity Formation {
+	IDFormation Long,
+	NomFormation String,
+    Information String
+}
+
+entity CentreDeFormation {
+	IDCentre Long,
+	NomCentre String,
+    Adresse String
+}
+
+entity Notification {
+	IDNotif Long
+}
+
+entity TypeDeNotification{
+	IDType Long,
+	NomType String
+}
+
+entity CategorieFormation{
+	IDCategorie Long,
+	NomCategorie String
+}
