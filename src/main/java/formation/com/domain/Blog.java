@@ -29,8 +29,11 @@ public class Blog implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "content")
-    private String content;
+    @Column(name = "contenu")
+    private String contenu;
+
+    @Column(name = "jhi_type")
+    private String type;
 
     @NotNull
     @Column(name = "created_at", nullable = false)
@@ -62,17 +65,30 @@ public class Blog implements Serializable {
         this.name = name;
     }
 
-    public String getContent() {
-        return content;
+    public String getContenu() {
+        return contenu;
     }
 
-    public Blog content(String content) {
-        this.content = content;
+    public Blog contenu(String contenu) {
+        this.contenu = contenu;
         return this;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setContenu(String contenu) {
+        this.contenu = contenu;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public Blog type(String type) {
+        this.type = type;
+        return this;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public ZonedDateTime getCreatedAt() {
@@ -127,7 +143,8 @@ public class Blog implements Serializable {
         return "Blog{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", content='" + getContent() + "'" +
+            ", contenu='" + getContenu() + "'" +
+            ", type='" + getType() + "'" +
             ", createdAt='" + getCreatedAt() + "'" +
             "}";
     }

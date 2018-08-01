@@ -26,7 +26,11 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="content" type="varchar(255)">
+            <column name="contenu" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="jhi_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 

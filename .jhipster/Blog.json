@@ -9,7 +9,11 @@
             ]
         },
         {
-            "fieldName": "content",
+            "fieldName": "contenu",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
             "fieldType": "String"
         },
         {

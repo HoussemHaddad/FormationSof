@@ -47,8 +47,11 @@ public class BlogResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_CONTENT = "AAAAAAAAAA";
-    private static final String UPDATED_CONTENT = "BBBBBBBBBB";
+    private static final String DEFAULT_CONTENU = "AAAAAAAAAA";
+    private static final String UPDATED_CONTENU = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TYPE = "AAAAAAAAAA";
+    private static final String UPDATED_TYPE = "BBBBBBBBBB";
 
     private static final ZonedDateTime DEFAULT_CREATED_AT = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_CREATED_AT = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
@@ -93,7 +96,8 @@ public class BlogResourceIntTest {
     public static Blog createEntity(EntityManager em) {
         Blog blog = new Blog()
             .name(DEFAULT_NAME)
-            .content(DEFAULT_CONTENT)
+            .contenu(DEFAULT_CONTENU)
+            .type(DEFAULT_TYPE)
             .createdAt(DEFAULT_CREATED_AT);
         return blog;
     }
@@ -119,7 +123,8 @@ public class BlogResourceIntTest {
         assertThat(blogList).hasSize(databaseSizeBeforeCreate + 1);
         Blog testBlog = blogList.get(blogList.size() - 1);
         assertThat(testBlog.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testBlog.getContent()).isEqualTo(DEFAULT_CONTENT);
+        assertThat(testBlog.getContenu()).isEqualTo(DEFAULT_CONTENU);
+        assertThat(testBlog.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testBlog.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
     }
 
@@ -190,7 +195,8 @@ public class BlogResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(blog.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].content").value(hasItem(DEFAULT_CONTENT.toString())))
+            .andExpect(jsonPath("$.[*].contenu").value(hasItem(DEFAULT_CONTENU.toString())))
+            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
             .andExpect(jsonPath("$.[*].createdAt").value(hasItem(sameInstant(DEFAULT_CREATED_AT))));
     }
     
@@ -207,7 +213,8 @@ public class BlogResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(blog.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.content").value(DEFAULT_CONTENT.toString()))
+            .andExpect(jsonPath("$.contenu").value(DEFAULT_CONTENU.toString()))
+            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
             .andExpect(jsonPath("$.createdAt").value(sameInstant(DEFAULT_CREATED_AT)));
     }
     @Test
@@ -232,7 +239,8 @@ public class BlogResourceIntTest {
         em.detach(updatedBlog);
         updatedBlog
             .name(UPDATED_NAME)
-            .content(UPDATED_CONTENT)
+            .contenu(UPDATED_CONTENU)
+            .type(UPDATED_TYPE)
             .createdAt(UPDATED_CREATED_AT);
 
         restBlogMockMvc.perform(put("/api/blogs")
@@ -245,7 +253,8 @@ public class BlogResourceIntTest {
         assertThat(blogList).hasSize(databaseSizeBeforeUpdate);
         Blog testBlog = blogList.get(blogList.size() - 1);
         assertThat(testBlog.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testBlog.getContent()).isEqualTo(UPDATED_CONTENT);
+        assertThat(testBlog.getContenu()).isEqualTo(UPDATED_CONTENU);
+        assertThat(testBlog.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testBlog.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
     }
 
