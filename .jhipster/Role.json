@@ -1,0 +1,23 @@
+{
+    "name": "Role",
+    "fields": [
+        {
+            "fieldName": "iDRole",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "nomRole",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180801073831",
+    "entityTableName": "role",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

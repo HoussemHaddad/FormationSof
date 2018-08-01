@@ -43,6 +43,19 @@ public class CacheConfiguration {
             cm.createCache(formation.com.domain.Category.class.getName(), jcacheConfiguration);
             cm.createCache(formation.com.domain.Category.class.getName() + ".categoryBlogs", jcacheConfiguration);
             cm.createCache(formation.com.domain.Blog.class.getName(), jcacheConfiguration);
+            cm.createCache(formation.com.domain.Utilisateur.class.getName(), jcacheConfiguration);
+            cm.createCache(formation.com.domain.Formulaire.class.getName(), jcacheConfiguration);
+            cm.createCache(formation.com.domain.Question.class.getName(), jcacheConfiguration);
+            cm.createCache(formation.com.domain.TypeQuestion.class.getName(), jcacheConfiguration);
+            cm.createCache(formation.com.domain.Reservation.class.getName(), jcacheConfiguration);
+            cm.createCache(formation.com.domain.AutresInformations.class.getName(), jcacheConfiguration);
+            cm.createCache(formation.com.domain.Role.class.getName(), jcacheConfiguration);
+            cm.createCache(formation.com.domain.Commentaire.class.getName(), jcacheConfiguration);
+            cm.createCache(formation.com.domain.Formation.class.getName(), jcacheConfiguration);
+            cm.createCache(formation.com.domain.CentreDeFormation.class.getName(), jcacheConfiguration);
+            cm.createCache(formation.com.domain.Notification.class.getName(), jcacheConfiguration);
+            cm.createCache(formation.com.domain.TypeDeNotification.class.getName(), jcacheConfiguration);
+            cm.createCache(formation.com.domain.CategorieFormation.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }
