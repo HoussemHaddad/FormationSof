@@ -69,4 +69,31 @@ entity TypeDeNotification{
 entity CategorieFormation{
 	IDCategorie Long,
 	NomCategorie String
+    
 }
+
+relationship ManyToMany {
+	Utilisateur{Role(IDRole)} to Role{Utilisateur(IDuser)},
+    Reservation{Question} to Question{Reservation},
+    Formulaire{Question} to Question{Formulaire}
+  
+}
+
+relationship ManyToOne {
+Utilisateur{Utilisateur} to Utilisateur{Utilisateur},
+Commentaire{Utilisateur} to Utilisateur{Commentaire},
+Formulaire{Utilisateur} to Utilisateur{Formulaire},
+Notification{Utilisateur} to Utilisateur{Notification},
+Formulaire{Formation} to Formation{Formulaire},
+Formation{CentreDeFormation} to CentreDeFormation{Formation},
+Formation{CategorieFormation} to CategorieFormation{Formation},
+Reservation{Utilisateur} to Utilisateur{Reservation},
+Reservation{Formation} to Formation{Reservation},
+Notification{Reservation} to Reservation{Notification},
+Notification{TypeDeNotification} to TypeDeNotification{Notification},
+Question{TypeQuestion} to TypeQuestion{Question},
+AutresInformations{Reservation} to Reservation{AutresInformations}
+
+}
+
+

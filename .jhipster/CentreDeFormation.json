@@ -14,7 +14,14 @@
             "fieldType": "String"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "formation",
+            "otherEntityName": "formation",
+            "otherEntityRelationshipName": "centreDeFormation"
+        }
+    ],
     "changelogDate": "20180801073834",
     "entityTableName": "centre_de_formation",
     "dto": "no",

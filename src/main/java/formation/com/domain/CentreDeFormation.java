@@ -1,11 +1,14 @@
 package formation.com.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -30,6 +33,10 @@ public class CentreDeFormation implements Serializable {
 
     @Column(name = "adresse")
     private String adresse;
+
+    @OneToMany(mappedBy = "centreDeFormation")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Formation> formations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -77,6 +84,31 @@ public class CentreDeFormation implements Serializable {
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
+    }
+
+    public Set<Formation> getFormations() {
+        return formations;
+    }
+
+    public CentreDeFormation formations(Set<Formation> formations) {
+        this.formations = formations;
+        return this;
+    }
+
+    public CentreDeFormation addFormation(Formation formation) {
+        this.formations.add(formation);
+        formation.setCentreDeFormation(this);
+        return this;
+    }
+
+    public CentreDeFormation removeFormation(Formation formation) {
+        this.formations.remove(formation);
+        formation.setCentreDeFormation(null);
+        return this;
+    }
+
+    public void setFormations(Set<Formation> formations) {
+        this.formations = formations;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

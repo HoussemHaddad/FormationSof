@@ -1,5 +1,6 @@
 package formation.com.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -30,6 +31,10 @@ public class AutresInformations implements Serializable {
 
     @Column(name = "contenu_info")
     private String contenuInfo;
+
+    @ManyToOne
+    @JsonIgnoreProperties("autresInformations")
+    private Reservation reservation;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -77,6 +82,19 @@ public class AutresInformations implements Serializable {
 
     public void setContenuInfo(String contenuInfo) {
         this.contenuInfo = contenuInfo;
+    }
+
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public AutresInformations reservation(Reservation reservation) {
+        this.reservation = reservation;
+        return this;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

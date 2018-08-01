@@ -16,6 +16,8 @@
             <tr>
             <th><span>ID</span></th>
             <th><span>I Duser</span></th>
+            <th><span>Utilisateur</span></th>
+            <th><span>Role</span></th>
             <th></th>
             </tr>
             </thead>
@@ -23,6 +25,16 @@
             <tr *ngFor="let utilisateur of utilisateurs ;trackBy: trackId">
                 <td><a [routerLink]="['/utilisateur', utilisateur.id, 'view' ]">{{utilisateur.id}}</a></td>
                 <td>{{utilisateur.iDuser}}</td>
+                <td>
+                    <div *ngIf="utilisateur.utilisateur">
+                        <a [routerLink]="['../utilisateur', utilisateur.utilisateur?.id, 'view' ]" >{{utilisateur.utilisateur?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <span *ngFor="let role of utilisateur.roles; let last = last">
+                            <a class="form-control-static" [routerLink]="['../role', role?.id, 'view' ]">{{role.iDRole}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

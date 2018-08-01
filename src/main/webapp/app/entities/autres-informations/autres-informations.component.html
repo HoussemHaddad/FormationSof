@@ -18,6 +18,7 @@
             <th><span>I D Info</span></th>
             <th><span>Nom Info</span></th>
             <th><span>Contenu Info</span></th>
+            <th><span>Reservation</span></th>
             <th></th>
             </tr>
             </thead>
@@ -27,6 +28,11 @@
                 <td>{{autresInformations.iDInfo}}</td>
                 <td>{{autresInformations.nomInfo}}</td>
                 <td>{{autresInformations.contenuInfo}}</td>
+                <td>
+                    <div *ngIf="autresInformations.reservation">
+                        <a [routerLink]="['../reservation', autresInformations.reservation?.id, 'view' ]" >{{autresInformations.reservation?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

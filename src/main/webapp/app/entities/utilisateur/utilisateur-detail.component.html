@@ -9,6 +9,18 @@
                 <dd>
                     <span>{{utilisateur.iDuser}}</span>
                 </dd>
+                <dt><span>Utilisateur</span></dt>
+                <dd>
+                    <div *ngIf="utilisateur.utilisateur">
+                        <a [routerLink]="['/utilisateur', utilisateur.utilisateur?.id, 'view']">{{utilisateur.utilisateur?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Role</span></dt>
+                <dd>
+                    <span *ngFor="let role of utilisateur.roles; let last = last">
+                        <a [routerLink]="['/role', role?.id, 'view' ]">{{role.iDRole}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
             </dl>
 
             <button type="submit"

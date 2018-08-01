@@ -16,6 +16,9 @@
             <tr>
             <th><span>ID</span></th>
             <th><span>I D Formulaire</span></th>
+            <th><span>Utilisateur</span></th>
+            <th><span>Formation</span></th>
+            <th><span>Question</span></th>
             <th></th>
             </tr>
             </thead>
@@ -23,6 +26,21 @@
             <tr *ngFor="let formulaire of formulaires ;trackBy: trackId">
                 <td><a [routerLink]="['/formulaire', formulaire.id, 'view' ]">{{formulaire.id}}</a></td>
                 <td>{{formulaire.iDFormulaire}}</td>
+                <td>
+                    <div *ngIf="formulaire.utilisateur">
+                        <a [routerLink]="['../utilisateur', formulaire.utilisateur?.id, 'view' ]" >{{formulaire.utilisateur?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="formulaire.formation">
+                        <a [routerLink]="['../formation', formulaire.formation?.id, 'view' ]" >{{formulaire.formation?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <span *ngFor="let question of formulaire.questions; let last = last">
+                            <a class="form-control-static" [routerLink]="['../question', question?.id, 'view' ]">{{question.id}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

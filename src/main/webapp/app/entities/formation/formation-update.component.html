@@ -25,6 +25,20 @@
                         [(ngModel)]="formation.information" />
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" for="field_centreDeFormation">Centre De Formation</label>
+                    <select class="form-control" id="field_centreDeFormation" name="centreDeFormation" [(ngModel)]="formation.centreDeFormation" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="centreDeFormationOption.id === formation.centreDeFormation?.id ? formation.centreDeFormation : centreDeFormationOption" *ngFor="let centreDeFormationOption of centredeformations; trackBy: trackCentreDeFormationById">{{centreDeFormationOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_categorieFormation">Categorie Formation</label>
+                    <select class="form-control" id="field_categorieFormation" name="categorieFormation" [(ngModel)]="formation.categorieFormation" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="categorieFormationOption.id === formation.categorieFormation?.id ? formation.categorieFormation : categorieFormationOption" *ngFor="let categorieFormationOption of categorieformations; trackBy: trackCategorieFormationById">{{categorieFormationOption.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

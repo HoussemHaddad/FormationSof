@@ -10,7 +10,14 @@
             "fieldType": "String"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "utilisateur",
+            "otherEntityName": "utilisateur",
+            "otherEntityField": "id"
+        }
+    ],
     "changelogDate": "20180801073832",
     "entityTableName": "commentaire",
     "dto": "no",

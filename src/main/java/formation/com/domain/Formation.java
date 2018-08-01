@@ -1,11 +1,15 @@
 package formation.com.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -30,6 +34,22 @@ public class Formation implements Serializable {
 
     @Column(name = "information")
     private String information;
+
+    @ManyToOne
+    @JsonIgnoreProperties("formations")
+    private CentreDeFormation centreDeFormation;
+
+    @ManyToOne
+    @JsonIgnoreProperties("formations")
+    private CategorieFormation categorieFormation;
+
+    @OneToMany(mappedBy = "formation")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Formulaire> formulaires = new HashSet<>();
+
+    @OneToMany(mappedBy = "formation")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Reservation> reservations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -77,6 +97,82 @@ public class Formation implements Serializable {
 
     public void setInformation(String information) {
         this.information = information;
+    }
+
+    public CentreDeFormation getCentreDeFormation() {
+        return centreDeFormation;
+    }
+
+    public Formation centreDeFormation(CentreDeFormation centreDeFormation) {
+        this.centreDeFormation = centreDeFormation;
+        return this;
+    }
+
+    public void setCentreDeFormation(CentreDeFormation centreDeFormation) {
+        this.centreDeFormation = centreDeFormation;
+    }
+
+    public CategorieFormation getCategorieFormation() {
+        return categorieFormation;
+    }
+
+    public Formation categorieFormation(CategorieFormation categorieFormation) {
+        this.categorieFormation = categorieFormation;
+        return this;
+    }
+
+    public void setCategorieFormation(CategorieFormation categorieFormation) {
+        this.categorieFormation = categorieFormation;
+    }
+
+    public Set<Formulaire> getFormulaires() {
+        return formulaires;
+    }
+
+    public Formation formulaires(Set<Formulaire> formulaires) {
+        this.formulaires = formulaires;
+        return this;
+    }
+
+    public Formation addFormulaire(Formulaire formulaire) {
+        this.formulaires.add(formulaire);
+        formulaire.setFormation(this);
+        return this;
+    }
+
+    public Formation removeFormulaire(Formulaire formulaire) {
+        this.formulaires.remove(formulaire);
+        formulaire.setFormation(null);
+        return this;
+    }
+
+    public void setFormulaires(Set<Formulaire> formulaires) {
+        this.formulaires = formulaires;
+    }
+
+    public Set<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public Formation reservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
+        return this;
+    }
+
+    public Formation addReservation(Reservation reservation) {
+        this.reservations.add(reservation);
+        reservation.setFormation(this);
+        return this;
+    }
+
+    public Formation removeReservation(Reservation reservation) {
+        this.reservations.remove(reservation);
+        reservation.setFormation(null);
+        return this;
+    }
+
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

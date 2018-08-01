@@ -17,6 +17,12 @@
                 <dd>
                     <span>{{autresInformations.contenuInfo}}</span>
                 </dd>
+                <dt><span>Reservation</span></dt>
+                <dd>
+                    <div *ngIf="autresInformations.reservation">
+                        <a [routerLink]="['/reservation', autresInformations.reservation?.id, 'view']">{{autresInformations.reservation?.id}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

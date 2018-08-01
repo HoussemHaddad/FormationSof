@@ -26,8 +26,23 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="utilisateur_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        
+        <createTable tableName="utilisateur_role">
+            <column name="roles_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="utilisateurs_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="utilisateurs_id, roles_id" tableName="utilisateur_role"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

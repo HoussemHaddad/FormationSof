@@ -25,6 +25,13 @@
                         [(ngModel)]="autresInformations.contenuInfo" />
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" for="field_reservation">Reservation</label>
+                    <select class="form-control" id="field_reservation" name="reservation" [(ngModel)]="autresInformations.reservation" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="reservationOption.id === autresInformations.reservation?.id ? autresInformations.reservation : reservationOption" *ngFor="let reservationOption of reservations; trackBy: trackReservationById">{{reservationOption.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

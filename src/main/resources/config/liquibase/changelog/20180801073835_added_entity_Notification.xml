@@ -26,6 +26,18 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="utilisateur_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="reservation_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="type_de_notification_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         

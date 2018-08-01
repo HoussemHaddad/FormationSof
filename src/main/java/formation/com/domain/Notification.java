@@ -1,5 +1,6 @@
 package formation.com.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -25,6 +26,18 @@ public class Notification implements Serializable {
     @Column(name = "i_d_notif")
     private Long iDNotif;
 
+    @ManyToOne
+    @JsonIgnoreProperties("notifications")
+    private Utilisateur utilisateur;
+
+    @ManyToOne
+    @JsonIgnoreProperties("notifications")
+    private Reservation reservation;
+
+    @ManyToOne
+    @JsonIgnoreProperties("notifications")
+    private TypeDeNotification typeDeNotification;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -45,6 +58,45 @@ public class Notification implements Serializable {
 
     public void setiDNotif(Long iDNotif) {
         this.iDNotif = iDNotif;
+    }
+
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public Notification utilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+        return this;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public Notification reservation(Reservation reservation) {
+        this.reservation = reservation;
+        return this;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
+
+    public TypeDeNotification getTypeDeNotification() {
+        return typeDeNotification;
+    }
+
+    public Notification typeDeNotification(TypeDeNotification typeDeNotification) {
+        this.typeDeNotification = typeDeNotification;
+        return this;
+    }
+
+    public void setTypeDeNotification(TypeDeNotification typeDeNotification) {
+        this.typeDeNotification = typeDeNotification;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

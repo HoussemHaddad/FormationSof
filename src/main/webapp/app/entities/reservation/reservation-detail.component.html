@@ -5,6 +5,24 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
+                <dt><span>Utilisateur</span></dt>
+                <dd>
+                    <div *ngIf="reservation.utilisateur">
+                        <a [routerLink]="['/utilisateur', reservation.utilisateur?.id, 'view']">{{reservation.utilisateur?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Formation</span></dt>
+                <dd>
+                    <div *ngIf="reservation.formation">
+                        <a [routerLink]="['/formation', reservation.formation?.id, 'view']">{{reservation.formation?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Question</span></dt>
+                <dd>
+                    <span *ngFor="let question of reservation.questions; let last = last">
+                        <a [routerLink]="['/question', question?.id, 'view' ]">{{question.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
             </dl>
 
             <button type="submit"

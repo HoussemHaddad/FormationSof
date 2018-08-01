@@ -16,6 +16,9 @@
             <tr>
             <th><span>ID</span></th>
             <th><span>I D Notif</span></th>
+            <th><span>Utilisateur</span></th>
+            <th><span>Reservation</span></th>
+            <th><span>Type De Notification</span></th>
             <th></th>
             </tr>
             </thead>
@@ -23,6 +26,21 @@
             <tr *ngFor="let notification of notifications ;trackBy: trackId">
                 <td><a [routerLink]="['/notification', notification.id, 'view' ]">{{notification.id}}</a></td>
                 <td>{{notification.iDNotif}}</td>
+                <td>
+                    <div *ngIf="notification.utilisateur">
+                        <a [routerLink]="['../utilisateur', notification.utilisateur?.id, 'view' ]" >{{notification.utilisateur?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="notification.reservation">
+                        <a [routerLink]="['../reservation', notification.reservation?.id, 'view' ]" >{{notification.reservation?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="notification.typeDeNotification">
+                        <a [routerLink]="['../type-de-notification', notification.typeDeNotification?.id, 'view' ]" >{{notification.typeDeNotification?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

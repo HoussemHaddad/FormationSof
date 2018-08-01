@@ -6,7 +6,28 @@
             "fieldType": "Long"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "utilisateur",
+            "otherEntityName": "utilisateur",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "formation",
+            "otherEntityName": "formation",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "formulaire",
+            "relationshipName": "question",
+            "otherEntityName": "question",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
     "changelogDate": "20180801073826",
     "entityTableName": "formulaire",
     "dto": "no",

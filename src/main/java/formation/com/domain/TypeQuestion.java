@@ -1,5 +1,6 @@
 package formation.com.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -7,6 +8,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -29,6 +32,10 @@ public class TypeQuestion implements Serializable {
 
     @Column(name = "nom_type")
     private String nomType;
+
+    @OneToMany(mappedBy = "typeQuestion")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Question> questions = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -63,6 +70,31 @@ public class TypeQuestion implements Serializable {
 
     public void setNomType(String nomType) {
         this.nomType = nomType;
+    }
+
+    public Set<Question> getQuestions() {
+        return questions;
+    }
+
+    public TypeQuestion questions(Set<Question> questions) {
+        this.questions = questions;
+        return this;
+    }
+
+    public TypeQuestion addQuestion(Question question) {
+        this.questions.add(question);
+        question.setTypeQuestion(this);
+        return this;
+    }
+
+    public TypeQuestion removeQuestion(Question question) {
+        this.questions.remove(question);
+        question.setTypeQuestion(null);
+        return this;
+    }
+
+    public void setQuestions(Set<Question> questions) {
+        this.questions = questions;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

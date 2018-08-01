@@ -15,6 +15,27 @@
                         [(ngModel)]="notification.iDNotif" />
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" for="field_utilisateur">Utilisateur</label>
+                    <select class="form-control" id="field_utilisateur" name="utilisateur" [(ngModel)]="notification.utilisateur" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="utilisateurOption.id === notification.utilisateur?.id ? notification.utilisateur : utilisateurOption" *ngFor="let utilisateurOption of utilisateurs; trackBy: trackUtilisateurById">{{utilisateurOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_reservation">Reservation</label>
+                    <select class="form-control" id="field_reservation" name="reservation" [(ngModel)]="notification.reservation" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="reservationOption.id === notification.reservation?.id ? notification.reservation : reservationOption" *ngFor="let reservationOption of reservations; trackBy: trackReservationById">{{reservationOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_typeDeNotification">Type De Notification</label>
+                    <select class="form-control" id="field_typeDeNotification" name="typeDeNotification" [(ngModel)]="notification.typeDeNotification" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="typeDeNotificationOption.id === notification.typeDeNotification?.id ? notification.typeDeNotification : typeDeNotificationOption" *ngFor="let typeDeNotificationOption of typedenotifications; trackBy: trackTypeDeNotificationById">{{typeDeNotificationOption.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

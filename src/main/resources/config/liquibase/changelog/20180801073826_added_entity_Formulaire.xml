@@ -26,8 +26,27 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="utilisateur_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="formation_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        
+        <createTable tableName="formulaire_question">
+            <column name="questions_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="formulaires_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="formulaires_id, questions_id" tableName="formulaire_question"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

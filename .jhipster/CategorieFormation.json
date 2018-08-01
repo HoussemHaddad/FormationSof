@@ -10,7 +10,14 @@
             "fieldType": "String"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "formation",
+            "otherEntityName": "formation",
+            "otherEntityRelationshipName": "categorieFormation"
+        }
+    ],
     "changelogDate": "20180801073837",
     "entityTableName": "categorie_formation",
     "dto": "no",

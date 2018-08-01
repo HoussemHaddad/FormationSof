@@ -1,11 +1,14 @@
 package formation.com.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -27,6 +30,11 @@ public class Role implements Serializable {
 
     @Column(name = "nom_role")
     private String nomRole;
+
+    @ManyToMany(mappedBy = "roles")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Utilisateur> utilisateurs = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -61,6 +69,31 @@ public class Role implements Serializable {
 
     public void setNomRole(String nomRole) {
         this.nomRole = nomRole;
+    }
+
+    public Set<Utilisateur> getUtilisateurs() {
+        return utilisateurs;
+    }
+
+    public Role utilisateurs(Set<Utilisateur> utilisateurs) {
+        this.utilisateurs = utilisateurs;
+        return this;
+    }
+
+    public Role addUtilisateur(Utilisateur utilisateur) {
+        this.utilisateurs.add(utilisateur);
+        utilisateur.getRoles().add(this);
+        return this;
+    }
+
+    public Role removeUtilisateur(Utilisateur utilisateur) {
+        this.utilisateurs.remove(utilisateur);
+        utilisateur.getRoles().remove(this);
+        return this;
+    }
+
+    public void setUtilisateurs(Set<Utilisateur> utilisateurs) {
+        this.utilisateurs = utilisateurs;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

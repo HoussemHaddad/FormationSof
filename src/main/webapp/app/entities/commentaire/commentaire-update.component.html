@@ -20,6 +20,13 @@
                         [(ngModel)]="commentaire.contenu" />
                 </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" for="field_utilisateur">Utilisateur</label>
+                    <select class="form-control" id="field_utilisateur" name="utilisateur" [(ngModel)]="commentaire.utilisateur" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="utilisateurOption.id === commentaire.utilisateur?.id ? commentaire.utilisateur : utilisateurOption" *ngFor="let utilisateurOption of utilisateurs; trackBy: trackUtilisateurById">{{utilisateurOption.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
