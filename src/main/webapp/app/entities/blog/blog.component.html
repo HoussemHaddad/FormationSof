@@ -16,7 +16,8 @@
             <tr>
             <th><span>ID</span></th>
             <th><span>Name</span></th>
-            <th><span>Content</span></th>
+            <th><span>Contenu</span></th>
+            <th><span>Type</span></th>
             <th><span>Created At</span></th>
             <th><span>Category</span></th>
             <th></th>
@@ -26,7 +27,8 @@
             <tr *ngFor="let blog of blogs ;trackBy: trackId">
                 <td><a [routerLink]="['/blog', blog.id, 'view' ]">{{blog.id}}</a></td>
                 <td>{{blog.name}}</td>
-                <td>{{blog.content}}</td>
+                <td>{{blog.contenu}}</td>
+                <td>{{blog.type}}</td>
                 <td>{{blog.createdAt | date:'medium'}}</td>
                 <td>
                     <div *ngIf="blog.category">

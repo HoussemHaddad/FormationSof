@@ -72,7 +72,7 @@ class BlogGatlingTest extends Simulation {
             .exec(http("Create new blog")
             .post("/api/blogs")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "content":"SAMPLE_TEXT", "createdAt":"2020-01-01T00:00:00.000Z"}""")).asJSON
+            .body(StringBody("""{"id":null, "name":"SAMPLE_TEXT", "contenu":"SAMPLE_TEXT", "type":"SAMPLE_TEXT", "createdAt":"2020-01-01T00:00:00.000Z"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_blog_url"))).exitHereIfFailed
             .pause(10)
